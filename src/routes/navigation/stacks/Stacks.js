@@ -35,16 +35,13 @@ export const HomeNavigator = () => (
       options={({ navigation }) => ({
         title: 'Home',
         headerLeft: () => <HeaderLeft navigation={navigation} />,
-        headerTitle: () => <HeaderTitle />,
       })}
     />
     <Stack.Screen
       name="Details"
       component={Details}
       options={({ navigation }) => ({
-        title: 'Home',
-        headerLeft: () => <HeaderLeft navigation={navigation} />,
-        headerTitle: () => <HeaderTitle />,
+        title: 'Details',
       })}
     />
   </Stack.Navigator>

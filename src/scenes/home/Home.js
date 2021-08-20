@@ -1,48 +1,53 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {
-  StyleSheet, Text, View, StatusBar,
-} from 'react-native'
-import Button from 'components/Button'
-import { colors } from 'theme'
+import React from 'react';
+import { View, Text, Button, StatusBar } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
+import {PESDK, PhotoEditorModal, Configuration, TintMode, SerializationExportType} from 'react-native-photoeditorsdk'
 
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.lightGrayPurple,
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
-})
+export default function Home() {
+  const navigation = useNavigation()
 
-const Home = ({ navigation }) => (
-  <View style={styles.root}>
+  let configuration: Configuration = {
+    sticker: {
+      categories: [
+        { identifier: "demo_sticker_category", name: 'logos',
+          thumbnailURI: require('../../../assets/pe-assets/React-Logo.png'), items: [
+            {
+              identifier: "demo_sticker_react", name: 'React',
+              stickerURI: require('../../../assets/pe-assets/React-Logo.png')
+            },
+            {
+              identifier: "demo_sticker_imgly", name: 'img.ly',
+              stickerURI: require('../../../assets/pe-assets/imgly-Logo.png'),
+              TintMode: TintMode.SOLID
+            },
+          ]
+        }
+      ]
+    },
+    export: {
+      serialization: {
+        enabled: true,
+        exportType: SerializationExportType.OBJECT,
+      }
+    }
+  }
+  let serialization = null;
+
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
     <StatusBar barStyle="light-content" />
-    <Text style={styles.title}>Home</Text>
-    <Button
-      title="Go to Details"
-      color="white"
-      backgroundColor={colors.lightPurple}
-      onPress={() => {
-        navigation.navigate('Details', { from: 'Home' })
-      }}
-    />
-  </View>
-)
-
-Home.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func,
-  }),
+      <Text>Home Screen</Text>
+      <Button title='Go Detail' onPress={() => {
+        navigation.navigate('Details', { data: 'from Home screen'})
+      }} />
+      <Button title='Edit a Sample Image' onPress={() => {
+        PESDK.openEditor(require('../../../assets/pe-assets/LA.jpg'), configuration, serialization).then(result => {
+          if (result != null) {
+            serialization = result.serialization;
+            console.log(serialization)
+          }
+        })
+      }} />
+    </View>
+  );
 }
-
-Home.defaultProps = {
-  navigation: { navigate: () => null },
-}
-
-export default Home
