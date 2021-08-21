@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Button, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
-import {PESDK, PhotoEditorModal, Configuration, TintMode, SerializationExportType} from 'react-native-photoeditorsdk'
+import {PESDK, PhotoEditorModal, Configuration, TintMode, SerializationExportType, ImageExportType} from 'react-native-photoeditorsdk'
 
 export default function Home() {
   const navigation = useNavigation()
@@ -25,6 +25,9 @@ export default function Home() {
       ]
     },
     export: {
+      image: {
+        exportType: ImageExportType.DATA_URL
+      },
       serialization: {
         enabled: true,
         exportType: SerializationExportType.OBJECT,
@@ -44,7 +47,8 @@ export default function Home() {
         PESDK.openEditor(require('../../../assets/pe-assets/LA.jpg'), configuration, serialization).then(result => {
           if (result != null) {
             serialization = result.serialization;
-            console.log(serialization)
+            dataUrl = result.image
+            console.log(dataUrl)
           }
         })
       }} />
