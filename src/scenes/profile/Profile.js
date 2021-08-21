@@ -29,7 +29,7 @@ const Profile = ({ navigation }) => (
       color="white"
       backgroundColor={colors.lightPurple}
       onPress={() => {
-        navigation.navigate('Details', { from: 'Profile' })
+        navigation.navigate('Details', { data: 'Profile' })
       }}
     />
   </View>

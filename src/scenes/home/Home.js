@@ -38,7 +38,7 @@ export default function Home() {
     <StatusBar barStyle="light-content" />
       <Text>Home Screen</Text>
       <Button title='Go Detail' onPress={() => {
-        navigation.navigate('Details', { data: 'from Home screen'})
+        navigation.navigate('Details', { data: 'from Home screen' })
       }} />
       <Button title='Edit a Sample Image' onPress={() => {
         PESDK.openEditor(require('../../../assets/pe-assets/LA.jpg'), configuration, serialization).then(result => {
