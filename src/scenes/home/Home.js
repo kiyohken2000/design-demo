@@ -2,6 +2,9 @@ import React from 'react';
 import { View, Text, Button, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import {PESDK, PhotoEditorModal, Configuration, TintMode, SerializationExportType, ImageExportType} from 'react-native-photoeditorsdk'
+import * as FileSystem from 'expo-file-system'
+import * as MediaLibrary from 'expo-media-library'
+import * as Haptics from 'expo-haptics'
 
 export default function Home() {
   const navigation = useNavigation()
@@ -36,6 +39,11 @@ export default function Home() {
   }
   let serialization = null;
 
+  const downloadImage = async ( file ) => {
+    await MediaLibrary.saveToLibraryAsync(file)
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success)
+  }
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
     <StatusBar barStyle="light-content" />
@@ -48,7 +56,8 @@ export default function Home() {
           if (result != null) {
             serialization = result.serialization;
             dataUrl = result.image
-            console.log(dataUrl)
+            console.log(serialization)
+            downloadImage(dataUrl)
           }
         })
       }} />
