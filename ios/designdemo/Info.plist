@@ -53,7 +53,7 @@
     <key>NSPhotoLibraryUsageDescription</key>
     <string>Use the photo library to change your avatar.</string>
     <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>Save the created image </string>
+    <string>Save the created image</string>
     <key>UILaunchStoryboardName</key>
     <string>SplashScreen</string>
     <key>UIRequiredDeviceCapabilities</key>

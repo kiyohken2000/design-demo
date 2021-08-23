@@ -24,7 +24,8 @@
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "Use the photo library to change your avatar.",
         "NSCameraUsageDescription": "Use for video call.",
-        "NSMicrophoneUsageDescription": "Use for video call."
+        "NSMicrophoneUsageDescription": "Use for video call.",
+        "NSPhotoLibraryAddUsageDescription": "Save the created image"
       },
       "userInterfaceStyle": "automatic"
     },
