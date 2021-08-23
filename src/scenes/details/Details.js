@@ -10,7 +10,6 @@ export default function Detail() {
     <View style={styles.container}>
     <StatusBar barStyle="light-content" />
       <Text style={[styles.title, {padding:20}]}>Detail Screen</Text>
-      <Text style={styles.content}>{data}</Text>
       <Text style={styles.field}>come from {data} screen</Text>
     </View>
   );
