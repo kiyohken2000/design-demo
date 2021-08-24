@@ -39,14 +39,16 @@ export default function Home() {
   return (
     <View style={styles.container}>
     <StatusBar barStyle="light-content" />
-      <FlatList 
-        data={data}
-        keyExtractor={(item, index) => index.toString()}
-        numColumns={3}
-        renderItem={({item}) => (
-          <ItemEditor item={item} />
-        )}
-      />
+      <View style={styles.content}>
+        <FlatList 
+          data={data}
+          keyExtractor={(item, index) => index.toString()}
+          numColumns={3}
+          renderItem={({item}) => (
+            <ItemEditor item={item} />
+          )}
+        />
+      </View>
     </View>
   );
 }

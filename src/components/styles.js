@@ -7,6 +7,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   content: {
+    flex: 1,
     width: '100%'
   },
   title: {
