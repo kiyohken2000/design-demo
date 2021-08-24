@@ -77,7 +77,7 @@ let configuration: Configuration = {
     },
     serialization: {
       enabled: true,
-      exportType: SerializationExportType.FILE_URL,
+      exportType: SerializationExportType.OBJECT,
     }
   }
 }

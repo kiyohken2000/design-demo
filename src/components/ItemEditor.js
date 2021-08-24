@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
+import { TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import {PESDK} from 'react-native-photoeditorsdk'
 import * as MediaLibrary from 'expo-media-library'
 import * as Haptics from 'expo-haptics'
-import { configuration, serialization } from './Configuration';
+import { configuration } from './Configuration';
 import { firebase } from '../firebase/config';
 import * as ImageManipulator from 'expo-image-manipulator'
-import { IconButton, Colors } from 'react-native-paper'
+import { Avatar } from 'react-native-elements';
 
-export default function PhotoEditor () {
+const ITEM_WIDTH = Dimensions.get('window').width
+
+export default function ItemEditor (props) {
   const [progress, setProgress] = useState('')
+  const item = props.item
+  const serialization = props.item.serializedData
 
   const downloadImage = async ( file ) => {
     await MediaLibrary.saveToLibraryAsync(file)
@@ -60,10 +65,7 @@ export default function PhotoEditor () {
   }
 
   return (
-    <IconButton
-      icon="cast"
-      color={Colors.blue500}
-      size={24}
+    <TouchableOpacity
       onPress={() => {
         PESDK.openEditor(require('../../assets/pe-assets/LA.jpg'), configuration, serialization).then(result => {
           if (result != null) {
@@ -74,6 +76,22 @@ export default function PhotoEditor () {
           }
         })
       }}
-    />
+    >
+      <Avatar
+        size="large"
+        title="IM"
+        source={{ uri: item.thumb}}
+        style={styles.imageStyle}
+      />
+    </TouchableOpacity>
   )
 }
+
+const styles = StyleSheet.create({
+  imageStyle: {
+    width: ITEM_WIDTH / 3,
+    height: ITEM_WIDTH / 3,
+    margin: 1,
+    resizeMode: 'cover',
+  },
+})
