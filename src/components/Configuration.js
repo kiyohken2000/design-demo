@@ -5,17 +5,8 @@ let configuration: Configuration = {
     personalStickers: true,
     categories: [
       { identifier: "demo_sticker_category", name: 'logos',
-        thumbnailURI: require('../../assets/pe-assets/React-Logo.png'),
+        thumbnailURI: require('../../assets/pe-assets/boseki/01.png'),
         items: [
-          {
-            identifier: "demo_sticker_react", name: 'React',
-            stickerURI: require('../../assets/pe-assets/React-Logo.png')
-          },
-          {
-            identifier: "demo_sticker_imgly", name: 'img.ly',
-            stickerURI: require('../../assets/pe-assets/imgly-Logo.png'),
-            TintMode: TintMode.SOLID
-          },
           {
             identifier: "boseki_sample_01", name: 'sample01',
             stickerURI: require('../../assets/pe-assets/boseki/01.png'),
