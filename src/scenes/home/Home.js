@@ -26,7 +26,7 @@ export default function Home() {
         const designs = querySnapshot.docs.map(documentSnapshot => {
           return {
             id: documentSnapshot.id,
-            data: documentSnapshot.createdAt,
+            createdAt: documentSnapshot.createdAt,
             thumb: documentSnapshot.thumb,
             serializedData: documentSnapshot.serializedData,
             ...documentSnapshot.data()
