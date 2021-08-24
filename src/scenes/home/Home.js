@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useLayoutEffect } from 'react'
-import { View, Text, ScrollView, StatusBar, TouchableOpacity } from 'react-native';
+import { View, StatusBar, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import PhotoEditor from '../../components/Photoeditor';
 import styles from '../../components/styles';
@@ -39,15 +39,14 @@ export default function Home() {
   return (
     <View style={styles.container}>
     <StatusBar barStyle="light-content" />
-      <ScrollView style={styles.content}>
-        {
-          data.map((item, i) => {
-            return (
-              <ItemEditor key={i} item={item} />
-            )
-          })
-        }
-      </ScrollView>
+      <FlatList 
+        data={data}
+        keyExtractor={(item, index) => index.toString()}
+        numColumns={3}
+        renderItem={({item}) => (
+          <ItemEditor item={item} />
+        )}
+      />
     </View>
   );
 }

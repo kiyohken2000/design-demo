@@ -61,7 +61,7 @@ export default function PhotoEditor () {
 
   return (
     <IconButton
-      icon="cast"
+      icon="image-auto-adjust"
       color={Colors.blue500}
       size={24}
       onPress={() => {
