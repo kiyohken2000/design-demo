@@ -67,7 +67,7 @@ export default function ItemEditor (props) {
   return (
     <TouchableOpacity
       onPress={() => {
-        PESDK.openEditor(require('../../assets/pe-assets/LA.jpg'), configuration, serialization).then(result => {
+        PESDK.openEditor(require('../../assets/pe-assets/background.png'), configuration, serialization).then(result => {
           if (result != null) {
             serializationData = result.serialization;
             dataUrl = result.image

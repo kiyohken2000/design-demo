@@ -65,7 +65,7 @@ export default function PhotoEditor () {
       color={Colors.blue500}
       size={24}
       onPress={() => {
-        PESDK.openEditor(require('../../assets/pe-assets/LA.jpg'), configuration, serialization).then(result => {
+        PESDK.openEditor(require('../../assets/pe-assets/background.png'), configuration, serialization).then(result => {
           if (result != null) {
             serializationData = result.serialization;
             dataUrl = result.image
